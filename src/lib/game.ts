@@ -24,7 +24,9 @@ export function drawQuestions(chs: number[], level: Level, count: number, rnd = 
   }
   for (let i = pool.length - 1; i > 0; i--) {
     const j = Math.floor(rnd() * (i + 1));
-    [pool[i], pool[j]] = [pool[j], pool[i]];
+    const tmp = pool[i]!;
+    pool[i] = pool[j]!;
+    pool[j] = tmp;
   }
   return pool.slice(0, count);
 }
